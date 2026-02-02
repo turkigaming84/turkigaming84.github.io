@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+<head>
+<meta charset="UTF-8">
+<title>AYAM GG | PS4 GoldHEN 6.72</title>
+<link rel="stylesheet" href="style.css">
+<script src="jb.js"></script>
+</head>
+
+<body onload="boot();">
+
+<div class="overlay">
+  <div class="card">
+
+    <!-- LOGO -->
+    <img src="assets/logo-ayamgg.png" id="logo" class="logo-img pulse">
+
+   <h1 class="title-gaming">
+  <span>AYAM</span><span class="gg">GG</span>
+</h1>
+
+    <h2>PS4 GoldHEN 6.72</h2>
+
+    <!-- VERSI GOLDHEN -->
+    <div class="version">GoldHEN v2.4b18.8</div>
+
+    <p id="msgs" class="status loading">Initializing Exploit…</p>
+
+    <div class="counter">
+      <span class="pass">PASS <b id="passCounter">0</b></span>
+      <span class="fail">FAIL <b id="failCounter">0</b></span>
+    </div>
+
+    <div class="footer">👑 GOD MODE • Auto Retry • Offline Ready</div>
+
+  </div>
+</div>
+
+<script>
+let retry = 0;
+const MAX_RETRY = 3;
+
+/* BOOT */
+function boot(){
+  if(!localStorage.godcache){
+    caches && caches.keys().then(k=>k.forEach(caches.delete));
+    localStorage.godcache = "done";
+  }
+  if(localStorage.cached672=="yes"){
+    setTimeout(load_goldhen,150);
+  }
+}
+
+/* CACHE */
+window.applicationCache.onprogress=function(e){
+  setStatus("Caching "+Math.round(100*(e.loaded/e.total))+"%","loading");
+};
+window.applicationCache.oncached=function(){
+  setStatus("Cache Installed ✔ Reopen Browser","success");
+  localStorage.cached672="yes";
+};
+window.applicationCache.onerror=function(){
+  localStorage.cached672="yes";
+};
+
+/* COUNTER */
+if(localStorage.passcount==null) localStorage.passcount=0;
+if(localStorage.failcount==null) localStorage.failcount=0;
+passCounter.innerHTML=localStorage.passcount;
+failCounter.innerHTML=localStorage.failcount;
+
+/* STATUS */
+function setStatus(text,cls){
+  msgs.className="status "+cls;
+  msgs.innerHTML=text;
+}
+
+/* LOAD */
+function load_goldhen(){
+  setStatus("Loading GoldHEN v2.4b18.8…","loading");
+  PLfile="goldhen_2.4b18.8.bin";
+  setTimeout(jailbreak,500);
+}
+
+/* SUCCESS HOOK */
+function goldhenLoaded(){
+  setStatus("GoldHEN Loaded ✔","success");
+  logo.classList.remove("pulse");
+  logo.classList.add("success-glow");
+  localStorage.passcount++;
+  passCounter.innerHTML=localStorage.passcount;
+}
+
+/* AUTO RETRY */
+window.onerror=function(){
+  retry++;
+  localStorage.failcount++;
+  failCounter.innerHTML=localStorage.failcount;
+
+  if(retry<=MAX_RETRY){
+    setStatus("Retrying Exploit ("+retry+"/"+MAX_RETRY+")…","fail");
+    setTimeout(load_goldhen,1200);
+  }else{
+    setStatus("Exploit Failed ❌ Refresh Browser","fail");
+  }
+};
+</script>
+
+</body>
+</html>
+

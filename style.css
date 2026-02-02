@@ -1,0 +1,207 @@
+/* =========================================
+   AYAM GG – GOD MODE CSS (FINAL ULTIMATE++)
+   PS4 SAFE • STABLE • NO DUPLICATE
+   ========================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+
+/* =========================
+   BACKGROUND
+   ========================= */
+body{
+  height:100vh;
+  background:url("assets/bg-ps4.jpg") center/cover no-repeat fixed;
+}
+
+/* =========================
+   OVERLAY
+   ========================= */
+.overlay{
+  height:100%;
+  background:linear-gradient(
+    rgba(0,0,0,0.7),
+    rgba(0,0,0,0.85)
+  );
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* =========================
+   CARD – GOD MODE
+   ========================= */
+.card{
+  background:rgba(15,15,20,0.88);
+  padding:55px 80px;
+  border-radius:24px;
+  text-align:center;
+  box-shadow:
+    0 0 40px rgba(0,180,255,0.35),
+    inset 0 0 30px rgba(255,255,255,0.03);
+  animation:fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+  from{ opacity:0; transform:scale(0.95); }
+  to{ opacity:1; transform:scale(1); }
+}
+
+/* =========================
+   LOGO AYAM GG – CENTER LOCK
+   ========================= */
+.logo-img{
+  display:block;
+  margin:0 auto 18px auto;   /* CENTER FIX */
+  width:170px;
+  max-width:70%;
+  filter:drop-shadow(0 0 25px rgba(0,180,255,0.8));
+}
+
+/* LOGO ANIMATION – TITAN MODE */
+.pulse{
+  animation:pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow{
+  0%{
+    transform:scale(1);
+    filter:drop-shadow(0 0 15px #00b4ff);
+  }
+  50%{
+    transform:scale(1.05);
+    filter:drop-shadow(0 0 40px #00ffff);
+  }
+  100%{
+    transform:scale(1);
+    filter:drop-shadow(0 0 15px #00b4ff);
+  }
+}
+
+/* SUCCESS – GOD MODE ON */
+.success-glow{
+  filter:drop-shadow(0 0 40px #00ff99);
+  transform:scale(1.03);
+}
+
+/* =========================
+   TITLE GAMING – AYAM GG
+   ========================= */
+.title-gaming{
+  font-size:64px;
+  letter-spacing:6px;
+  margin-bottom:8px;
+  text-transform:uppercase;
+  font-weight:900;
+  position:relative;
+  display:inline-block;
+}
+
+/* AYAM */
+.title-gaming span{
+  color:#e6faff;
+  text-shadow:
+    0 0 8px rgba(0,180,255,0.7),
+    0 0 18px rgba(0,180,255,0.5),
+    0 0 35px rgba(0,255,255,0.4);
+}
+
+/* GG */
+.title-gaming .gg{
+  margin-left:12px;
+  color:#ffcc33;
+  text-shadow:
+    0 0 10px rgba(255,200,0,0.9),
+    0 0 25px rgba(255,140,0,0.8),
+    0 0 45px rgba(255,80,0,0.6);
+}
+
+/* SHINE EFFECT */
+.title-gaming::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:60%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  animation:shine 3.5s infinite;
+}
+
+@keyframes shine{
+  0%{ left:-120%; }
+  50%{ left:120%; }
+  100%{ left:120%; }
+}
+
+/* =========================
+   SUBTITLE & VERSION
+   ========================= */
+.card h2{
+  font-size:18px;
+  color:#bbb;
+  margin:12px 0 20px;
+}
+
+.version{
+  font-size:14px;
+  color:#00ffff;
+  margin-bottom:18px;
+  letter-spacing:1px;
+  opacity:0.85;
+}
+
+/* =========================
+   STATUS
+   ========================= */
+.status{
+  font-size:22px;
+  margin-bottom:30px;
+  transition:0.4s;
+}
+
+.loading{ color:#00ffcc; }
+.success{ color:#00ff99; }
+.fail{ color:#ff4d4d; }
+
+/* =========================
+   COUNTER
+   ========================= */
+.counter{
+  display:flex;
+  justify-content:center;
+  gap:50px;
+  font-size:18px;
+}
+
+.pass{ color:#00ff99; }
+.fail{ color:#ff4d4d; }
+
+/* =========================
+   FOOTER
+   ========================= */
+.footer{
+  margin-top:35px;
+  font-size:14px;
+  color:#777;
+  letter-spacing:1px;
+}
+
+/* =========================
+   RESPONSIVE – PS4 SAFE
+   ========================= */
+@media(max-width:900px){
+  .title-gaming{
+    font-size:52px;
+    letter-spacing:4px;
+  }
+}
