@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AYAM GG | PS4 GoldHEN 6.72</title>
+<title>AYAM GG | AUTO SAFE 6.72</title>
 <link rel="stylesheet" href="style.css">
 <script src="jb.js"></script>
 </head>
@@ -12,8 +12,10 @@
 <div class="overlay">
   <div class="card">
 
+    <!-- LOGO -->
     <img src="assets/logo-ayamgg.png" id="logo" class="logo-img pulse">
 
+    <!-- TITLE -->
     <h1 class="title-gaming">
       <span>AYAM</span><span class="gg">GG</span>
     </h1>
@@ -21,58 +23,74 @@
     <h2>PS4 GoldHEN 6.72</h2>
     <div class="version">GoldHEN v2.4b18.8</div>
 
-    <p id="msgs" class="status loading">Ready. Press LOAD to start.</p>
-
-    <button onclick="startExploit()" style="margin:15px;padding:10px 20px;">
-      LOAD GOLDHEN
-    </button>
+    <p id="msgs" class="status loading">
+      Preparing Exploit…
+    </p>
 
     <div class="counter">
       <span class="pass">PASS <b id="passCounter">0</b></span>
       <span class="fail">FAIL <b id="failCounter">0</b></span>
     </div>
 
-    <div class="footer">👑 GOD MODE • GitHub SAFE • Manual Start</div>
+    <div class="footer">👑 AUTO MODE • SAFE TIMING • GOD BRAIN</div>
 
   </div>
 </div>
 
 <script>
-let retry = 0;
-const MAX_RETRY = 3;
+/* =====================
+   AYAM GG AUTO SAFE
+   ===================== */
 
+let retry = 0;
+const MAX_RETRY = 2;
+
+/* COUNTER INIT */
 if(localStorage.passcount==null) localStorage.passcount=0;
 if(localStorage.failcount==null) localStorage.failcount=0;
 passCounter.innerHTML=localStorage.passcount;
 failCounter.innerHTML=localStorage.failcount;
 
+/* STATUS */
 function setStatus(text,cls){
-  msgs.className="status "+cls;
-  msgs.innerHTML=text;
+  msgs.className = "status " + cls;
+  msgs.innerHTML = text;
 }
 
-function startExploit(){
+/* AUTO BOOT */
+window.onload = function(){
+  setStatus("Waiting for system stability…","loading");
+
+  // DELAY AMAN UNTUK PS4 + GITHUB
+  setTimeout(autoStart, 2000);
+};
+
+/* START */
+function autoStart(){
   setStatus("Loading GoldHEN v2.4b18.8…","loading");
-  PLfile="goldhen_2.4b18.8";   // ⬅️ TANPA .bin (WAJIB)
-  setTimeout(jailbreak, 900);  // ⬅️ DELAY AMAN
+  PLfile = "goldhen_2.4b18.8"; // TANPA .bin
+  setTimeout(jailbreak, 800);
 }
 
+/* SUCCESS */
 function goldhenLoaded(){
   setStatus("GoldHEN Loaded ✔","success");
   logo.classList.remove("pulse");
   logo.classList.add("success-glow");
+
   localStorage.passcount++;
-  passCounter.innerHTML=localStorage.passcount;
+  passCounter.innerHTML = localStorage.passcount;
 }
 
-window.onerror=function(){
+/* ERROR HANDLER */
+window.onerror = function(){
   retry++;
   localStorage.failcount++;
-  failCounter.innerHTML=localStorage.failcount;
+  failCounter.innerHTML = localStorage.failcount;
 
-  if(retry<=MAX_RETRY){
-    setStatus("Retrying ("+retry+"/"+MAX_RETRY+")…","fail");
-    setTimeout(startExploit,1500);
+  if(retry <= MAX_RETRY){
+    setStatus("Retrying exploit ("+retry+"/"+MAX_RETRY+")…","fail");
+    setTimeout(autoStart, 1800);
   }else{
     setStatus("Exploit Failed ❌ Refresh Browser","fail");
   }
@@ -81,6 +99,3 @@ window.onerror=function(){
 
 </body>
 </html>
-
-
-
